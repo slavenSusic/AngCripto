@@ -1,0 +1,22 @@
+<table class="crypto-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Market Cap</th>
+        <th>24h Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of tableItems">
+        <td>{{ list.name }}</td>
+        <td><img src="{{ list.image }}" alt=""></td>
+        <td>{{ list.current_price }}</td>
+        <td>{{ list.market_cap }}</td>
+        <td>{{ list.price_change_24h }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
