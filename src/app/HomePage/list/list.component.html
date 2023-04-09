@@ -9,12 +9,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let list of tableItems">
-        <td>{{ list.name }}</td>
+      <input type="text" [(ngModel)]="search" placeholder="Filter">
+      <tr *ngFor="let list of tableItems | filter:search">
+        <td>{{ list.name }} <button (click)="showDetail(list)"> <a routerLink="/detail/{{list.id}}"> </a> Click for details</button> </td>
         <td><img src="{{ list.image }}" alt=""></td>
-        <td>{{ list.current_price }}</td>
-        <td>{{ list.market_cap }}</td>
-        <td>{{ list.price_change_24h }}</td>
+        <td>${{ list.current_price }}</td>
+        <td>${{ list.market_cap }}</td>
+        <td>{{ list.price_change_24h.toString().slice(0,6) }}</td>
       </tr>
     </tbody>
   </table>
