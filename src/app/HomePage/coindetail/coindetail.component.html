@@ -1,5 +1,8 @@
 <div class="container">
+  <div class="container">
     <h1>Details</h1>
-    <p>{{coinData.description.en.slice(0, 1000)}}</p>
-    <img src="{{coinData.image.large}}" alt="">
+    <ng-container *ngIf="details">
+      <img src="{{details.image.small}}" alt="">
+      <p>{{details.description.en}}</p>
+    </ng-container>
   </div>

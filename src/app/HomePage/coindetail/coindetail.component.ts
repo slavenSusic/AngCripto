@@ -2,32 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { APIServiceService } from 'src/app/Service/apiservice.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { DetailsInt } from 'src/Interface/DetailsInterface.model';
 @Component({
   selector: 'app-coindetail',
   templateUrl: './coindetail.component.html',
   styleUrls: ['./coindetail.component.css']
 })
 export class CoindetailComponent implements OnInit{
-coinData!:any
-coinId!:string
-  constructor(private api:APIServiceService,
-    private location: Location,
-    private route: ActivatedRoute,
-    ) {}
+ 
+image!:string
+description!:string
 
-  
+  constructor(private api:APIServiceService, private route:ActivatedRoute) {}
+details:any
 
-   ngOnInit(): void {
-      this.route.params.subscribe(val =>{
-        this.coinId=val['id']
-      })
-       this.getCoinDetails()
-      }
-    getCoinDetails(){
-      this.api.detailsData(this.coinId).subscribe(data =>{
-        console.log(data)
-        this.coinData=data
-      })
-      }
-    }
+ngOnInit(): void {
+  this.getDetails()
+}
+
+getDetails(): void {
+  const id = this.route.snapshot.paramMap.get('id');
+  if (id) {
+    this.api.detailsData(id).subscribe((data) => {
+      this.details = data;
+      console.log(data);
+    });
+  }
+}
+
+
+}
+
+    
 

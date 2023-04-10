@@ -39,9 +39,7 @@ export class ListComponent implements OnInit {
 
   tableItems!: CryptoList[];
   
-  showDetail(id: any){
-      this.router.navigate(['detail', id.id])
-  }
+  
 
 
   ngOnInit(): void {
@@ -50,7 +48,7 @@ export class ListComponent implements OnInit {
 
   getListData(){
     this.APIService.listData().subscribe(data =>{
-     console.log(data)
+    //  console.log(data)
       this.tableItems=data
     })
 

@@ -1,3 +1,6 @@
+
+<!-- <app-graf></app-graf> -->
+
 <table class="crypto-table">
     <thead>
       <tr>
@@ -11,8 +14,8 @@
     <tbody>
       <input type="text" [(ngModel)]="search" placeholder="Filter">
       <tr *ngFor="let list of tableItems | filter:search">
-        <td>{{ list.name }} <button (click)="showDetail(list)"> <a routerLink="/detail/{{list.id}}"> </a> Click for details</button> </td>
-        <td><img src="{{ list.image }}" alt=""></td>
+        <td>{{ list.name }} <a routerLink="/detail/{{list.id}}"> details</a></td>
+        <td><img src="{{ list.image }}" alt=""> <a routerLink="/graf/{{list.id}}"> Graf</a></td>
         <td>${{ list.current_price }}</td>
         <td>${{ list.market_cap }}</td>
         <td>{{ list.price_change_24h.toString().slice(0,6) }}</td>

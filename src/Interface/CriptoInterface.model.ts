@@ -26,5 +26,5 @@ export interface CryptoList  {
         symbol: string;
         total_supply: number;
         total_volume: number;
-      } []
+      } 
     
