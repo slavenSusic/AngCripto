@@ -6,24 +6,32 @@
       <th>Price</th>
       <th>Market Cap</th>
       <th>24h Change</th>
+      <th>Mini Graph</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td colspan="5">
+      <td colspan="6">
         <input type="text" [(ngModel)]="search" placeholder="Filter">
       </td>
     </tr>
     <tr *ngFor="let list of tableItems | filter:search | paginate: { itemsPerPage: pageSize, currentPage: page }"  >
-      <td>{{ list.name }} <a routerLink="/detail/{{list.id}}">details</a></td>
+      <td>{{ list.name }} <a mat-stroked-button routerLink="/detail/{{list.id}}">Details <mat-icon>open_in_new</mat-icon></a></td>
  
       <td  class="flex">
-        <img src="{{ list.image }}" alt=""><a routerLink="/graf/{{list.id}}">{{'Graf' | uppercase}}</a>
+        <img src="{{ list.image }}" alt=""><a routerLink="/graf/{{list.id}}">History Chart <mat-icon>open_in_new</mat-icon></a>
       </td>
 
       <td>${{ list.current_price }}</td>
       <td>${{ list.market_cap }}</td>
-      <td>{{ list.price_change_24h.toString().slice(0,6) }} </td>
+      <td [ngClass]="{negative: list.price_change_24h < 0,
+                               positive: list.price_change_24h > 0 
+                              }"
+      ><strong> {{ list.price_change_24h.toString().slice(0,5) }}</strong>
+       </td>
+      <td>
+       
+      </td>
     </tr>
   </tbody>
 </table>

@@ -1,50 +1,75 @@
 .crypto-table {
   border-collapse: collapse;
   width: 100%;
-}
-
-.crypto-table th, .crypto-table td {
-  padding: 8px;
+  margin: 1rem 0;
+  font-family: Arial, sans-serif;
+  }
+  
+  .crypto-table th,
+  .crypto-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
   text-align: left;
-}
-
-.crypto-table th {
-  background-color: #009688;
-  color: #fff;
-}
-
-.crypto-table tbody tr:nth-child(odd) {
+  }
+  
+  .crypto-table th {
   background-color: #f2f2f2;
-}
-
-.crypto-table tbody tr:hover {
-  background-color: #ddd;
-}
-
-.crypto-table img {
-  height: 60px;
-  margin-right: 8px;
-}
-
-.crypto-table a {
-  color: #009688;
-  text-decoration: none;
-}
-
-.crypto-table input[type="text"] {
-  padding: 8px;
-  margin-bottom: 16px;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.crypto-table input[type="text"]::placeholder {
-  color: #aaa;
-}
-
-.flex {
-  display:flex;
-  justify-content: center;
+  font-weight: bold;
+  color: #555;
+  }
+  
+  .crypto-table img {
+  width: 50px;
+  height: 50px;
+  margin-right: 1rem;
+  vertical-align: middle;
+  }
+  
+  .crypto-table .flex {
+  display: flex;
   align-items: center;
-}
+  }
+  
+  .crypto-table .positive {
+  color: green;
+  }
+  
+  .crypto-table .negative {
+  color: red;
+  }
+  
+  .crypto-table tr:nth-child(odd) {
+  background-color: #f5f5f5;
+  }
+  
+  .crypto-table tr:hover {
+  background-color: #e6e6e6;
+  }
+  
+  .crypto-table a {
+  text-decoration: none;
+  color: #0077cc;
+  }
+  
+  .crypto-table a:hover {
+  text-decoration: underline;
+  color: #005fa3;
+  }
+  
+  .crypto-table td:nth-child(3),
+  .crypto-table td:nth-child(4),
+  .crypto-table td:nth-child(5) {
+  font-weight: bold;
+  }
+  
+  .crypto-table td:nth-child(3) {
+  color: #0077cc;
+  }
+  
+  .crypto-table td:nth-child(4) {
+  color: #6e757c;
+  }
+  
+  .crypto-table td:nth-child(5) strong {
+  font-weight: normal;
+  }

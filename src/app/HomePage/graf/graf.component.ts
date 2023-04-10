@@ -11,9 +11,9 @@ import { Location } from '@angular/common';
   styleUrls: ['./graf.component.css']
 })
 export class GrafComponent implements OnInit  {
-  [x: string]: any;
+
  
-  day: number = 30;
+  day: number = 10;
   id: string = '';
  
 

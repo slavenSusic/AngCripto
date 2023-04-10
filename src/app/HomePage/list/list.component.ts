@@ -3,6 +3,8 @@ import { Component, OnInit,Pipe, PipeTransform } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { APIServiceService } from 'src/app/Service/apiservice.service';
 import { CryptoList } from 'src/Interface/CriptoInterface.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Pipe({
   name: 'filter'
@@ -29,15 +31,15 @@ export class FilterPipe implements PipeTransform {
 })
 
 export class ListComponent implements OnInit {
- 
+  tableItems!: CryptoList[];
   search!:string;
-
+  dataSource = new MatTableDataSource<CryptoList>(this.tableItems);
 
   constructor(private APIService:APIServiceService, 
     
     private router:Router) {}
 
-  tableItems!: CryptoList[];
+  
   page = 1;
   pageSize = 10; 
   
