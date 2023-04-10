@@ -5,6 +5,7 @@ import { ListComponent } from './HomePage/list/list.component';
 import { CoindetailComponent } from './homepage/coindetail/coindetail.component';
 import { GrafComponent } from './HomePage/graf/graf.component';
 const routes: Routes = [
+  { path: '', redirectTo: '/table', pathMatch: 'full' },
   {path:'home', component:HomeComponent},
   {path:'table', component:ListComponent},
   {path: 'detail/:id', component:CoindetailComponent},
