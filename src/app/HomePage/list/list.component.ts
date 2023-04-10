@@ -38,6 +38,8 @@ export class ListComponent implements OnInit {
     private router:Router) {}
 
   tableItems!: CryptoList[];
+  page = 1;
+  pageSize = 10; 
   
   
 

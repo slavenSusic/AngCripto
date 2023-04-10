@@ -1,26 +1,30 @@
-
-<!-- <app-graf></app-graf> -->
-
 <table class="crypto-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Image</th>
-        <th>Price</th>
-        <th>Market Cap</th>
-        <th>24h Change</th>
-      </tr>
-    </thead>
-    <tbody>
-      <input type="text" [(ngModel)]="search" placeholder="Filter">
-      <tr *ngFor="let list of tableItems | filter:search">
-        <td>{{ list.name }} <a routerLink="/detail/{{list.id}}"> details</a></td>
-        <td><img src="{{ list.image }}" alt=""> <a routerLink="/graf/{{list.id}}"> Graf</a></td>
-        <td>${{ list.current_price }}</td>
-        <td>${{ list.market_cap }}</td>
-        <td>{{ list.price_change_24h.toString().slice(0,6) }}</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Market Cap</th>
+      <th>24h Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="5">
+        <input type="text" [(ngModel)]="search" placeholder="Filter">
+      </td>
+    </tr>
+    <tr *ngFor="let list of tableItems | filter:search | paginate: { itemsPerPage: pageSize, currentPage: page }"  >
+      <td>{{ list.name }} <a routerLink="/detail/{{list.id}}">details</a></td>
+ 
+      <td  class="flex">
+        <img src="{{ list.image }}" alt=""><a routerLink="/graf/{{list.id}}">{{'Graf' | uppercase}}</a>
+      </td>
+
+      <td>${{ list.current_price }}</td>
+      <td>${{ list.market_cap }}</td>
+      <td>{{ list.price_change_24h.toString().slice(0,6) }} </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="page = $event"></pagination-controls>

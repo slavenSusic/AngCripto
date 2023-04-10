@@ -1,74 +1,50 @@
-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  img {
-    width: 50px;
-    height: 50px;
-  }
-  
-  tr:hover {
-    background-color: #f5f5f5;
-  }
-  
-  li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  td:first-child, th:first-child {
-    width: 30%;
-  }
-  
-  td:nth-child(2), th:nth-child(2) {
-    width: 20%;
-  }
-  
-  td:nth-child(3), th:nth-child(3) {
-    width: 20%;
-  }
-  
-  td:nth-child(4), th:nth-child(4) {
-    width: 15%;
-  }
-  
-  td:nth-child(5), th:nth-child(5) {
-    width: 15%;
-  }
-  input {
-    font-size: 16px;
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 4px;
-    box-shadow: none;
-    outline: none;
-  }
-  
-  input:focus {
-    border-color: #007bff;
-  }
-  button {
-    font-size: 8px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0069d9;
-  }
+.crypto-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.crypto-table th, .crypto-table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.crypto-table th {
+  background-color: #009688;
+  color: #fff;
+}
+
+.crypto-table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.crypto-table tbody tr:hover {
+  background-color: #ddd;
+}
+
+.crypto-table img {
+  height: 60px;
+  margin-right: 8px;
+}
+
+.crypto-table a {
+  color: #009688;
+  text-decoration: none;
+}
+
+.crypto-table input[type="text"] {
+  padding: 8px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.crypto-table input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+.flex {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}

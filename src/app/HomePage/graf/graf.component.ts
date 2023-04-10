@@ -3,6 +3,7 @@ import { ChartConfiguration, ChartDataset, ChartOptions, ChartType } from 'chart
 import { APIServiceService } from 'src/app/Service/apiservice.service';
 import {BaseChartDirective}  from 'ng2-charts'
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-graf',
@@ -10,10 +11,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./graf.component.css']
 })
 export class GrafComponent implements OnInit  {
+  [x: string]: any;
  
   day: number = 30;
   id: string = '';
  
+
+  data7days(day:number) {
+  this.day=7;
+   this.getGrafData();
+}
+data30days(day: number) {
+  this.day=30;
+  this.getGrafData();
+}
+dataAlldays(day: number) {
+this.day=100000;
+this.getGrafData();
+}
+
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
@@ -41,32 +57,37 @@ export class GrafComponent implements OnInit  {
     }
   };
   
+  goBack(): void {
+    this.location.back();
+  }
+
+
   public lineChartType: ChartType = 'line';
   
   @ViewChild(BaseChartDirective) myLineChart!: BaseChartDirective;
 
-  constructor(private api:APIServiceService, private route:ActivatedRoute) {}
+  constructor(private api:APIServiceService, private route:ActivatedRoute, private location:Location) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '';
     this.getGrafData();
   }
    
-  getGrafData(){
+  getGrafData() {
     this.api.grafData(this.id, this.day).subscribe(res => {
       setTimeout(() => {
         this.myLineChart.chart?.update();
       }, 200);
-      
+  
       console.log(res);
-
-      this.lineChartData.datasets[0].data = res.prices.map((a:any) => {
+  
+      this.lineChartData.datasets[0].data = res.prices.map((a: any) => {
         return a[1];
       });
-
+  
       this.lineChartData.datasets[0].label = this.id;
-
-      this.lineChartData.labels = res.prices.map((a:any) => {
+  
+      this.lineChartData.labels = res.prices.map((a: any) => {
         let date = new Date(a[0]);
         let time = date.getHours() > 12 ? `${date.getHours() - 12}: ${date.getMinutes()} PM` :
         `${date.getHours()}: ${date.getMinutes()} AM`
@@ -74,4 +95,5 @@ export class GrafComponent implements OnInit  {
       });
     });
   }
+  
 }

@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 import { CoindetailComponent } from './homepage/coindetail/coindetail.component';
 import { FormsModule } from '@angular/forms';
+import { MinigrafComponent } from './minigraf/minigraf.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     CoindetailComponent,
     FilterPipe,
+    MinigrafComponent,
     
    
   ],
@@ -27,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     NgChartsModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
     
    ],
   providers: [  { provide: NgChartsConfiguration, useValue: { generateColors: false }}],

@@ -13,8 +13,12 @@ export class CoindetailComponent implements OnInit{
 image!:string
 description!:string
 
-  constructor(private api:APIServiceService, private route:ActivatedRoute) {}
+  constructor(private api:APIServiceService, private route:ActivatedRoute, private location:Location) {}
 details:any
+
+goBack(){
+this.location.back()
+}
 
 ngOnInit(): void {
   this.getDetails()
