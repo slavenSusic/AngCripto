@@ -33,7 +33,7 @@ export class FilterPipe implements PipeTransform {
 export class ListComponent implements OnInit {
   tableItems!: CryptoList[];
   search!:string;
-  dataSource = new MatTableDataSource<CryptoList>(this.tableItems);
+
 
   constructor(private APIService:APIServiceService, 
     
@@ -51,9 +51,9 @@ export class ListComponent implements OnInit {
   }
 
   getListData(){
-    this.APIService.listData().subscribe(data =>{
-    //  console.log(data)
-      this.tableItems=data
+    this.APIService.listData().subscribe(tableItem =>{
+      console.log(tableItem)
+      this.tableItems=tableItem
     })
 
 }
