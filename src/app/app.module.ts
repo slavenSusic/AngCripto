@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { GraphminiComponent } from './graphmini/graphmini.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
     HomeComponent,
     CoindetailComponent,
     FilterPipe,
+    GraphminiComponent,
   
   
     
