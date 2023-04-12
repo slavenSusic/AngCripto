@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { DetailsInt } from 'src/Interface/DetailsInterface.model';
 import { Observable, map } from 'rxjs';
 import { ListClass } from 'src/Interface/listClass.model';
+import { filter } from 'rxjs/operators';
 
 
 @Injectable({
@@ -21,7 +22,10 @@ listData():Observable<ListClass[]> {
   return this.http.get<CryptoList[]>(this.listUrl).pipe(
     map((tableItems: CryptoList[]) => {
       return tableItems.map(tableItem => new ListClass(tableItem))
-    })
+    }),
+    //  filter((listItems: ListClass[])=> {
+    //    return listItems.some(listitem => listitem.current_price > 2)
+    //  })
   )
 }
  

@@ -1,8 +1,9 @@
 .crypto-table {
   border-collapse: collapse;
-  width: 100%;
-  margin: 1rem 0;
+  width: 90%;
+  margin: 2rem auto;
   font-family: Arial, sans-serif;
+  
   }
   
   .crypto-table th,
