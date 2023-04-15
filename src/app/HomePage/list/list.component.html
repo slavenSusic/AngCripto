@@ -1,3 +1,5 @@
+<app-trending></app-trending>
+
 <table class="crypto-table">
   <thead>
     <tr>
@@ -15,7 +17,9 @@
         <input type="text" [(ngModel)]="search" placeholder="Filter">
       </td>
     </tr>
-    <tr *ngFor="let list of tableItems | filter:search | paginate: { itemsPerPage: pageSize, currentPage: page }"  >
+    <tr *ngFor="let list of (tableItems$ | async) || [] | filter:search | paginate: { itemsPerPage: pageSize, currentPage: page }">
+
+
       <td>{{ list.name }} <a mat-stroked-button routerLink="/detail/{{list.id}}">Details <mat-icon>open_in_new</mat-icon></a></td>
  
       <td  class="flex">
@@ -27,7 +31,7 @@
       <td [ngClass]="{negative: list.price_change_24h < 0,
                                positive: list.price_change_24h > 0 
                               }"
-      ><strong> {{ list.price_change_24h.toString().slice(0,5) }}</strong>
+      ><strong> ${{ list.price_change_24h.toString().slice(0,5) }}</strong>
        </td>
        <td>
         <!-- minigraf -->

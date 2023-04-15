@@ -15,6 +15,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { GraphminiComponent } from './graphmini/graphmini.component';
+import { TrendingComponent } from './trending/trending.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,7 @@ import { GraphminiComponent } from './graphmini/graphmini.component';
     CoindetailComponent,
     FilterPipe,
     GraphminiComponent,
+    TrendingComponent,
   
   
     
@@ -39,7 +43,9 @@ import { GraphminiComponent } from './graphmini/graphmini.component';
     NgxPaginationModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule
+
    ],
   providers: [  { provide: NgChartsConfiguration, useValue: { generateColors: false }}],
   bootstrap: [AppComponent]

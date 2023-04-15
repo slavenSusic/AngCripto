@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { DetailsInt } from 'src/Interface/DetailsInterface.model';
 import { Observable, map } from 'rxjs';
 import { ListClass } from 'src/Interface/listClass.model';
-import { filter } from 'rxjs/operators';
+import { trendingInt } from 'src/Interface/trendingInterface';
+import { TrendingClass } from 'src/Interface/trending.model';
+
 
 
 @Injectable({
@@ -23,25 +25,34 @@ listData():Observable<ListClass[]> {
     map((tableItems: CryptoList[]) => {
       return tableItems.map(tableItem => new ListClass(tableItem))
     }),
-    //  filter((listItems: ListClass[])=> {
-    //    return listItems.some(listitem => listitem.current_price > 2)
-    //  })
-  )
-}
  
-    
-  
-
-  //api za graf
+  )
+} 
+      //api za graf
   grafData(id: string, day:number ){
     const url=`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${day}`
     return this.http.get<any>(url)
   }
-
   //api za details
   detailsData(id: string): Observable<DetailsInt> {
     const url = `https://api.coingecko.com/api/v3/coins/${id}`;
     return this.http.get<DetailsInt>(url);
   }
-  
+ 
+  private urlTrend = 'https://api.coingecko.com/api/v3/search/trending'
+trendingData(): Observable<TrendingClass> {
+  return this.http.get<trendingInt>(this.urlTrend).pipe(
+    map((response:trendingInt) => new TrendingClass(response)
+     ) )
 }
+  
+}        
+    //.pipe(
+      // map((tableItems: trendingInt[]) => {
+      //   return tableItems.map(tableItem => new TrendingClass(tableItem))
+      // }),
+    //)
+  
+
+  
+
