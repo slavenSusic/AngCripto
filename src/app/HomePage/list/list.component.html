@@ -1,42 +1,48 @@
 <app-trending></app-trending>
 
-<table class="crypto-table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Price</th>
-      <th>Market Cap</th>
-      <th>24h Change</th>
-      <th>Mini Graph</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="6">
-        <input type="text" [(ngModel)]="search" placeholder="Filter">
-      </td>
-    </tr>
-    <tr *ngFor="let list of (tableItems$ | async) || [] | filter:search | paginate: { itemsPerPage: pageSize, currentPage: page }">
-
-
-      <td>{{ list.name }} <a mat-stroked-button routerLink="/detail/{{list.id}}">Details <mat-icon>open_in_new</mat-icon></a></td>
- 
-      <td  class="flex">
-        <img src="{{ list.image }}" alt=""><a routerLink="/graf/{{list.id}}">History Chart <mat-icon>open_in_new</mat-icon></a>
-      </td>
-
-      <td>${{ list.current_price }}</td>
-      <td>${{ list.market_cap }}</td>
-      <td [ngClass]="{negative: list.price_change_24h < 0,
-                               positive: list.price_change_24h > 0 
-                              }"
-      ><strong> ${{ list.price_change_24h.toString().slice(0,5) }}</strong>
-       </td>
-       <td>
-        <!-- minigraf -->
-      </td>
-    </tr>
-  </tbody>
-</table>
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
+<div class="table-container">
+  <table class="crypto-table">
+    <caption>Cryptocurrency Trending Table</caption>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Market Cap</th>
+        <th>24h Change</th>
+        <th>Mini Graph</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="6">
+          <label for="search-input">Search</label>
+          <input type="text" [(ngModel)]="search" id="search-input" placeholder="Type to filter cryptocurrencies">
+        </td>
+      </tr>
+      <tr *ngFor="let list of (tableItems$ | async) || [] | filter:search | paginate: { itemsPerPage: pageSize, currentPage: page }">
+        <td>{{ list.name }}</td>
+        <td>
+          <a href="/detail/{{list.id}}">
+            <img src="{{ list.image }}" alt="{{ list.name }} logo">
+          </a>
+        </td>
+        <td>
+          <span>${{ list.current_price }}</span>
+        </td>
+        <td>
+          <span>${{ list.market_cap }}</span>
+        </td>
+        <td [ngClass]="{negative: list.price_change_24h < 0, positive: list.price_change_24h > 0}">
+          <span>${{ list.price_change_24h.toString().slice(0,5) }}</span>
+        </td>
+        <td>
+          <a href="/graf/{{list.id}}">
+            <app-graphmini [listData]="list"></app-graphmini>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

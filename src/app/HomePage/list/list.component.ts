@@ -40,6 +40,8 @@ export class ListComponent {
     
     private router:Router) {
       this.tableItems$=this.APIService.listData()
+     
+
     }
 
   

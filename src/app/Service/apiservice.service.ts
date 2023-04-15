@@ -33,6 +33,14 @@ listData():Observable<ListClass[]> {
     const url=`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${day}`
     return this.http.get<any>(url)
   }
+
+        //api za graf
+        miniGrafData(id: string){
+          const url=`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7`
+          return this.http.get<any>(url)
+        }
+
+
   //api za details
   detailsData(id: string): Observable<DetailsInt> {
     const url = `https://api.coingecko.com/api/v3/coins/${id}`;
