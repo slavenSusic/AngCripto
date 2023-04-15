@@ -2,11 +2,9 @@
 
 <div class="table-container">
   <table class="crypto-table">
-    <caption>Cryptocurrency Trending Table</caption>
     <thead>
       <tr>
         <th>Name</th>
-        <th>Image</th>
         <th>Price</th>
         <th>Market Cap</th>
         <th>24h Change</th>
@@ -21,13 +19,11 @@
         </td>
       </tr>
       <tr *ngFor="let list of (tableItems$ | async) || [] | filter:search | paginate: { itemsPerPage: pageSize, currentPage: page }">
-        <td>{{ list.name }}</td>
-        <td>
-          <a href="/detail/{{list.id}}">
-            <img src="{{ list.image }}" alt="{{ list.name }} logo">
-          </a>
-        </td>
-        <td>
+       <td class='class="name-image-cell'> <span>click for details </span> <a  mat-stroked-button routerLink="/detail/{{list.id}}"> {{ list.name }} 
+        <img class='image' src="{{ list.image }}" alt="{{ list.name }} logo"></a>
+       </td> 
+
+                <td>
           <span>${{ list.current_price }}</span>
         </td>
         <td>
@@ -37,6 +33,7 @@
           <span>${{ list.price_change_24h.toString().slice(0,5) }}</span>
         </td>
         <td>
+          <span>Click on graf to expand</span>
           <a href="/graf/{{list.id}}">
             <app-graphmini [listData]="list"></app-graphmini>
           </a>
@@ -44,5 +41,5 @@
       </tr>
     </tbody>
   </table>
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <pagination-controls (pageChange)="page = $event" class="pagination-controls"></pagination-controls>
 </div>

@@ -1,93 +1,108 @@
 .table-container {
-  width: 100%;
-  margin: 2rem auto;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .crypto-table {
-  width: 100%;
   border-collapse: collapse;
-  text-align: left;
+  width: 100%;
 }
 
 .crypto-table caption {
   font-size: 1.5rem;
+  font-weight: bold;
   margin-bottom: 1rem;
   text-align: center;
 }
 
-.crypto-table thead tr th {
-  font-size: 1.2rem;
-  font-weight: bold;
+.crypto-table th,
+.crypto-table td {
   padding: 1rem;
-  border-bottom: 2px solid #ccc;
-  background-color: #f0f0f0;
+  text-align: center;
 }
 
-.crypto-table tbody tr td {
-  font-size: 1.1rem;
-  padding: 1rem;
-  border-bottom: 1px solid #ccc;
-}
-
-.crypto-table tbody tr td:first-child {
+.crypto-table th {
+  background-color: #f1f1f1;
   font-weight: bold;
+  position: sticky;
+  top: 0;
 }
 
-.crypto-table tbody tr td:nth-child(2) img {
+.crypto-table tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+.image {
+  width:50px;
+  height: 50px;
+}
+.crypto-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.crypto-table td.name-image-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.crypto-table td.name-image-cell img {
+  margin-left: 0.5rem;
+}
+
+.crypto-table td:nth-child(2),
+.crypto-table td:nth-child(3),
+.crypto-table td:nth-child(4) {
+  text-align: right;
+}
+
+.crypto-table td:nth-child(1) {
+  text-align: left;
+}
+
+.crypto-table td:nth-child(5) {
+  text-align: center;
+}
+
+.crypto-table td span {
   display: block;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto;
-  border-radius: 50%;
 }
 
-.crypto-table tbody tr td:nth-child(3),
-.crypto-table tbody tr td:nth-child(4),
-.crypto-table tbody tr td:nth-child(5) {
-  font-weight: bold;
+.crypto-table td a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-decoration: none;
 }
 
-.crypto-table tbody tr td.negative {
+.crypto-table td a:hover {
+  text-decoration: underline;
+}
+
+.crypto-table td.negative {
   color: red;
 }
 
-.crypto-table tbody tr td.positive {
+.crypto-table td.positive {
   color: green;
 }
 
-.crypto-table tbody tr td:last-child {
-  text-align: center;
-  font-weight: bold;
+.crypto-table input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
 }
 
-.crypto-table tbody tr td:last-child app-graphmini {
-  display: block;
-  margin: 0 auto;
+.crypto-table input[type="text"]:focus {
+  outline: none;
+  border-color: #4CAF50;
 }
 
 .pagination-controls {
+  margin: 20px auto;
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
-}
-
-.pagination-controls li {
-  list-style: none;
-  display: inline-block;
-  margin: 0 0.5rem;
-  font-size: 1.2rem;
-}
-
-.pagination-controls li a {
-  display: block;
-  padding: 0.5rem;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #333;
-  background-color: #f0f0f0;
-}
-
-.pagination-controls li a:hover,
-.pagination-controls li a:focus {
-  background-color: #ccc;
 }
