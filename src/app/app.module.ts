@@ -8,7 +8,7 @@ import { FilterPipe, ListComponent } from './HomePage/list/list.component';
 import { HomeComponent } from './HomePage/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
-import { CoindetailComponent } from './homepage/coindetail/coindetail.component';
+import { CoindetailComponent } from './HomePage/coindetail/coindetail.component';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { NgxPaginationModule } from 'ngx-pagination';
