@@ -1,0 +1,11 @@
+<h1>graf</h1>
+<button (click)="goBack()"><mat-icon>home</mat-icon></button>
+<canvas class="canvas"
+   baseChart
+  [data]="lineChartData"
+  [options]="lineChartOptions"
+  [type]="lineChartType"
+></canvas>
+<button class="primary-button" (click)="data7days(day)">7days</button>
+ <button class="primary-button" (click)="data30days(day)">30days</button>
+ <button class="primary-button" (click)="dataAlldays(day)">All</button> 

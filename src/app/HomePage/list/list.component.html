@@ -1,0 +1,47 @@
+<app-trending></app-trending>
+
+<div class="table-container">
+  <table class="crypto-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Market Cap</th>
+        <th>24h Change</th>
+        <th>Mini Graph</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="5">
+          <label for="search-input">Search</label>
+          <input type="text" [(ngModel)]="search" id="search-input" placeholder="Type to filter cryptocurrencies">
+        </td>
+      </tr>
+      <tr *ngFor="let list of (tableItems$ | async) || [] | filter:search | paginate: { itemsPerPage: pageSize, currentPage: page }">
+        <td class="name-image-cell">
+          <button mat-stroked-button routerLink="/detail/{{list.id}}">
+            Click for details <a><img class='image' src="{{ list.image }}" alt="{{ list.name }} logo"></a>
+            {{ list.name }} 
+          </button>
+        </td> 
+        <td>
+          <span>${{ list.current_price }}</span>
+        </td>
+        <td>
+          <span>${{ list.market_cap }}</span>
+        </td>
+        <td [ngClass]="{negative: list.price_change_24h < 0, positive: list.price_change_24h > 0}">
+          ${{ list.price_change_24h.toFixed(2) }}
+        </td>
+        <td>
+          <span>Click on graph to expand</span>
+          <a href="/graph/{{list.id}}">
+            <app-graphmini [listData]="list"></app-graphmini>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="page = $event" class="pagination-controls"></pagination-controls>
+</div>
