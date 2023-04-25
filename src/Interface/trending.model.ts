@@ -7,6 +7,7 @@
             small:string,
        coin_id: number,
        thumb:string, 
+       large:string,
        name: string, 
        symbol: string, 
        market_cap_rank: number

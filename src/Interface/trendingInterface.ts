@@ -6,6 +6,7 @@ coins: {item:
     thumb:string, 
     small:string,
     price_btc:number
+    large:string,
     name: string, 
     symbol: string, 
     market_cap_rank: number

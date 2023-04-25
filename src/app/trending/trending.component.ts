@@ -18,6 +18,7 @@ export class TrendingComponent implements OnInit{
    coin_id: number,
    thumb:string, 
    small:string,
+   large:string,
    price_btc:number
    name: string, 
    symbol: string, 
