@@ -1,6 +1,7 @@
 import { CryptoList } from "./CriptoInterface.model";
 
 export class ListClass  implements CryptoList {
+    market_cap_rank:number;
     current_price: number;
     id: string;
     image: string;
@@ -9,6 +10,7 @@ export class ListClass  implements CryptoList {
     price_change_24h: number;
 
     constructor( data: CryptoList) {
+        this.market_cap_rank=data.market_cap_rank
         this.current_price=data.current_price;
         this.id=data.id
         this.image=data.image

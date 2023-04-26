@@ -4,6 +4,7 @@
   <table class="crypto-table">
     <thead>
       <tr>
+        <th>Rank</th>
         <th>Name</th>
         <th>Price</th>
         <th>Market Cap</th>
@@ -19,11 +20,15 @@
         </td>
       </tr>
       <tr *ngFor="let list of (tableItems$ | async) || [] | filter:search | paginate: { itemsPerPage: pageSize, currentPage: page }">
+        <td>
+          {{list.market_cap_rank}} 
+        </td>
         <td class="name-image-cell">
-          <button mat-stroked-button routerLink="/detail/{{list.id}}">
-            Click for details <a><img class='image' src="{{ list.image }}" alt="{{ list.name }} logo"></a>
-            {{ list.name }} 
-          </button>
+          <p>Click for details</p>
+           <a routerLink="/detail/{{list.id}}">
+             <a><img class='image' src="{{ list.image }}" alt="{{ list.name }} logo"></a>
+           </a>
+          {{ list.name }} 
         </td> 
         <td>
           <span>${{ list.current_price }}</span>

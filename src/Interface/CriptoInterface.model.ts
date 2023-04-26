@@ -1,4 +1,5 @@
 export interface CryptoList {
+  market_cap_rank:number
   current_price: number;
   id: string;
   image: string;
